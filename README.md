@@ -25,12 +25,13 @@ modules/
   common/         # cli.py, properties.py, utils.py — shared helpers
   setup/          # properties.py — creates properties.yml (no-op if it exists), called by setup.sh/setup.ps1; templates/properties/*.yml — tier fragments
 tasks/
-  __init__.py     # Wires the invoke Collection (debug, ruff, setup, tests) plus top-level aliases (fix, test)
-  combos.py       # Top-level aliases: fix, test
-  debug.py        # debug.env — print cwd + sorted env vars
-  ruff.py         # ruff.fix, ruff.format
-  setup.py        # setup.properties — creates/stamps properties.yml
-  tests.py        # tests.actionlint, tests.pylint, tests.pytest, tests.rufflint, tests.yamllint
+  __init__.py     # Wires the invoke Collection: common/ and tests/ (registered at their original top-level names — debug, ruff, setup, tests, plus bare fix/test — not nested under common.*/tests.* prefixes)
+  common/
+    main.py       # Top-level aliases: fix, test (was combos.py)
+    debug.py      # debug.env — print cwd + sorted env vars
+    ruff.py       # ruff.fix, ruff.format
+    setup.py      # setup.properties — creates/stamps properties.yml
+  tests/          # One file per check (actionlint.py, pylint.py, pytest.py, rufflint.py, yamllint.py) — still one flat tests.* namespace: tests.actionlint, tests.pylint, tests.pytest, tests.rufflint, tests.yamllint
 .github/
   copilot-instructions.md # What this repo is, for GitHub Copilot
   workflows/
