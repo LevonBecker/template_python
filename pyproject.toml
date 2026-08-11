@@ -59,6 +59,10 @@ docstring-code-line-length = "dynamic"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 norecursedirs = ["tmp", ".venv", ".ruff_cache", "__pycache__"]
+markers = [
+    "setup: modules/setup/ (properties.yml bootstrap) — tests/setup/",
+    "style: Markdown/doc style checks — tests/style/",
+]
 
 [tool.pylint.main]
 py-version = "3.14"
